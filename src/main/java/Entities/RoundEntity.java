@@ -1,16 +1,21 @@
 package Entities;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
 @Table(name = "ROUNDS", schema = "whist-online")
-public class RoundsEntity {
+public class RoundEntity {
     private long roundId;
     private byte scoreP1;
     private byte scoreP2;
     private byte scoreP3;
     private byte scoreP4;
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "roundID_FK")
+    private List<GameTypeEntity> gameTypes;
+
 
     @Id
     @Column(name = "roundID", nullable = false)
@@ -66,7 +71,7 @@ public class RoundsEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        RoundsEntity that = (RoundsEntity) o;
+        RoundEntity that = (RoundEntity) o;
         return roundId == that.roundId && scoreP1 == that.scoreP1 && scoreP2 == that.scoreP2 && scoreP3 == that.scoreP3 && scoreP4 == that.scoreP4;
     }
 

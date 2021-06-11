@@ -2,15 +2,26 @@ package Entities;
 
 import javax.persistence.*;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "USERS", schema = "whist-online", catalog = "")
-public class UsersEntity {
+@Table(name = "USERS", schema = "whist-online")
+public class UserEntity {
     private int userId;
     private String userName;
     private String password;
     private byte[] profilePicture;
+    @ManyToMany(mappedBy = "players")
+    private List<GameEntity> games;
+
+    public UserEntity() {
+    }
+
+    public UserEntity(String userName, String password){
+        this.userName = userName;
+        this.password = password;
+    }
 
     @Id
     @Column(name = "userID", nullable = false)
@@ -56,7 +67,7 @@ public class UsersEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        UsersEntity that = (UsersEntity) o;
+        UserEntity that = (UserEntity) o;
         return userId == that.userId && Objects.equals(userName, that.userName) && Objects.equals(password, that.password) && Arrays.equals(profilePicture, that.profilePicture);
     }
 

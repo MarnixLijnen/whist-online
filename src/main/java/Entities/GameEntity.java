@@ -2,16 +2,24 @@ package Entities;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
 @Table(name = "GAMES", schema = "whist-online")
-@NamedQuery(name = "findAllGames", query = "select g from GamesEntity g")
-public class GamesEntity {
+@NamedQuery(name = "findAllGames", query = "select g from GameEntity g")
+public class GameEntity {
     private int gameId;
     private String gameName;
     private String password;
     private Timestamp timestamp;
+    @OneToMany
+    @JoinColumn(name = "gameID_FK")
+    private List<RoundEntity> rounds;
+    @ManyToMany
+    @JoinTable(name = "PLAYERS", joinColumns = @JoinColumn(name = "gameID_FK"), inverseJoinColumns = @JoinColumn(name = "userID_FK"))
+    private List<UserEntity> players;
+
 
     @Id
     @Column(name = "gameID", nullable = false)
@@ -57,7 +65,7 @@ public class GamesEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        GamesEntity that = (GamesEntity) o;
+        GameEntity that = (GameEntity) o;
         return gameId == that.gameId && Objects.equals(gameName, that.gameName) && Objects.equals(password, that.password) && Objects.equals(timestamp, that.timestamp);
     }
 

@@ -5,9 +5,13 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "GAME_TYPES", schema = "whist-online")
-public class GameTypesEntity {
+public class GameTypeEntity {
     private long scoreId;
     private byte gameType;
+    @OneToOne
+    @JoinColumn(name = "userID_FK")
+    private UserEntity user;
+
 
     @Id
     @Column(name = "scoreID", nullable = false)
@@ -33,7 +37,7 @@ public class GameTypesEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        GameTypesEntity that = (GameTypesEntity) o;
+        GameTypeEntity that = (GameTypeEntity) o;
         return scoreId == that.scoreId && gameType == that.gameType;
     }
 

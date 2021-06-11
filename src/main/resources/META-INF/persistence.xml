@@ -5,11 +5,11 @@
              version="2.2">
     <persistence-unit name="whist-online">
 
-        <class>Entities.GamesEntity</class>
+        <class>Entities.GameEntity</class>
         <class>Entities.PlayersEntity</class>
-        <class>Entities.RoundsEntity</class>
-        <class>Entities.GameTypesEntity</class>
-        <class>Entities.UsersEntity</class>
+        <class>Entities.RoundEntity</class>
+        <class>Entities.GameTypeEntity</class>
+        <class>Entities.UserEntity</class>
         <properties>
             <property name="toplink.jdbc.url" value="jdbc:mysql://localhost:3306/whist-online"/>
             <property name="toplink.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>

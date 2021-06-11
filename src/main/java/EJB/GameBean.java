@@ -1,6 +1,6 @@
 package EJB;
 
-import Entities.GamesEntity;
+import Entities.GameEntity;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -18,7 +18,7 @@ public class GameBean {
     }
 
     @SuppressWarnings("unchecked")
-    public List<GamesEntity> findAllGames() {
+    public List<GameEntity> findAllGames() {
       Query query = em.createNamedQuery("findAllGames");
       return query.getResultList();
     }

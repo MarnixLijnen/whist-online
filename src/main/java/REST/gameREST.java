@@ -1,7 +1,7 @@
 package REST;
 
 import EJB.GameBean;
-import Entities.GamesEntity;
+import Entities.GameEntity;
 
 import javax.ejb.EJB;
 import javax.ws.rs.*;
@@ -23,7 +23,7 @@ public class gameREST {
     @GET
     @Path("/getAllGames")
     @Produces(MediaType.TEXT_PLAIN)
-    public List<GamesEntity> getAllGames() {
+    public List<GameEntity> getAllGames() {
         return gameBean.findAllGames();
     }
 }
