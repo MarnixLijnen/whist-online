@@ -4,10 +4,10 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "SCORES", schema = "whist-online", catalog = "")
-public class ScoresEntity {
+@Table(name = "GAME_TYPES", schema = "whist-online")
+public class GameTypesEntity {
     private long scoreId;
-    private byte score;
+    private byte gameType;
 
     @Id
     @Column(name = "scoreID", nullable = false)
@@ -20,25 +20,25 @@ public class ScoresEntity {
     }
 
     @Basic
-    @Column(name = "score", nullable = false)
-    public byte getScore() {
-        return score;
+    @Column(name = "gameType", nullable = false)
+    public byte getGameType() {
+        return gameType;
     }
 
-    public void setScore(byte score) {
-        this.score = score;
+    public void setGameType(byte score) {
+        this.gameType = score;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ScoresEntity that = (ScoresEntity) o;
-        return scoreId == that.scoreId && score == that.score;
+        GameTypesEntity that = (GameTypesEntity) o;
+        return scoreId == that.scoreId && gameType == that.gameType;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(scoreId, score);
+        return Objects.hash(scoreId, gameType);
     }
 }

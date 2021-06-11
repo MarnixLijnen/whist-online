@@ -4,10 +4,13 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "ROUNDS", schema = "whist-online", catalog = "")
+@Table(name = "ROUNDS", schema = "whist-online")
 public class RoundsEntity {
     private long roundId;
-    private byte gameType;
+    private byte scoreP1;
+    private byte scoreP2;
+    private byte scoreP3;
+    private byte scoreP4;
 
     @Id
     @Column(name = "roundID", nullable = false)
@@ -20,13 +23,43 @@ public class RoundsEntity {
     }
 
     @Basic
-    @Column(name = "gameType", nullable = false)
-    public byte getGameType() {
-        return gameType;
+    @Column(name = "scoreP1", nullable = false)
+    public byte getScoreP1() {
+        return scoreP1;
     }
 
-    public void setGameType(byte gameType) {
-        this.gameType = gameType;
+    public void setScoreP1(byte score) {
+        this.scoreP1 = score;
+    }
+
+    @Basic
+    @Column(name = "scoreP2", nullable = false)
+    public byte getScoreP2() {
+        return scoreP2;
+    }
+
+    public void setScoreP2(byte score) {
+        this.scoreP2 = score;
+    }
+
+    @Basic
+    @Column(name = "scoreP3", nullable = false)
+    public byte getScoreP3() {
+        return scoreP3;
+    }
+
+    public void setScoreP3(byte score) {
+        this.scoreP3 = score;
+    }
+
+    @Basic
+    @Column(name = "scoreP4", nullable = false)
+    public byte getScoreP4() {
+        return scoreP4;
+    }
+
+    public void setScoreP4(byte score) {
+        this.scoreP4 = score;
     }
 
     @Override
@@ -34,11 +67,11 @@ public class RoundsEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         RoundsEntity that = (RoundsEntity) o;
-        return roundId == that.roundId && gameType == that.gameType;
+        return roundId == that.roundId && scoreP1 == that.scoreP1 && scoreP2 == that.scoreP2 && scoreP3 == that.scoreP3 && scoreP4 == that.scoreP4;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(roundId, gameType);
+        return Objects.hash(roundId, scoreP1, scoreP2, scoreP3, scoreP4);
     }
 }

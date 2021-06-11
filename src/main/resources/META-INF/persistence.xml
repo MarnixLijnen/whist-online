@@ -8,7 +8,7 @@
         <class>Entities.GamesEntity</class>
         <class>Entities.PlayersEntity</class>
         <class>Entities.RoundsEntity</class>
-        <class>Entities.ScoresEntity</class>
+        <class>Entities.GameTypesEntity</class>
         <class>Entities.UsersEntity</class>
         <properties>
             <property name="toplink.jdbc.url" value="jdbc:mysql://localhost:3306/whist-online"/>
