@@ -1,15 +1,17 @@
 package REST;
 
 import EJB.GameBean;
-import Entities.GameEntity;
+import entities.GameEntity;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 @Path("/game")
-public class gameREST {
+@RolesAllowed({"user", "admin"})
+public class gameAPI {
 
     @EJB
     GameBean gameBean;

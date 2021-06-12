@@ -1,6 +1,6 @@
 package EJB;
 
-import Entities.UserEntity;
+import entities.UserEntity;
 
 import javax.ejb.Stateful;
 import javax.json.JsonObject;

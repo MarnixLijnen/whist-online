@@ -1,6 +1,6 @@
 package EJB;
 
-import Entities.GameEntity;
+import entities.GameEntity;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;

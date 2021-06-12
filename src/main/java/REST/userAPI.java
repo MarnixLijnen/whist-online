@@ -2,13 +2,15 @@ package REST;
 
 import EJB.SessionBean;
 
+import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.json.JsonObject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 @Path("/user")
-public class userREST {
+@RolesAllowed({"user", "admin"})
+public class userAPI {
 
     @Inject
     private SessionBean session;
