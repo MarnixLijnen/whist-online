@@ -6,7 +6,6 @@
     <persistence-unit name="whist-online">
 
         <class>entities.GameEntity</class>
-        <class>entities.PlayersEntity</class>
         <class>entities.RoundEntity</class>
         <class>entities.GameTypeEntity</class>
         <class>entities.UserEntity</class>

@@ -5,6 +5,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.security.enterprise.credential.Credential;
 import javax.security.enterprise.credential.UsernamePasswordCredential;
 import javax.security.enterprise.identitystore.CredentialValidationResult;
+import javax.security.enterprise.identitystore.DatabaseIdentityStoreDefinition;
 import javax.security.enterprise.identitystore.IdentityStore;
 import java.util.HashMap;
 import java.util.Map;
@@ -16,6 +17,10 @@ import static javax.security.enterprise.identitystore.CredentialValidationResult
 import static javax.security.enterprise.identitystore.IdentityStore.ValidationType.VALIDATE;
 
 @RequestScoped
+@DatabaseIdentityStoreDefinition(
+        dataSourceLookup = "java:comp/DefaultDataSource",
+        callerQuery = "#{'select password from USERS where userName = ?'}"
+)
 public class AuthenticationIdentityStore implements IdentityStore {
 
     private Map<String, String> callerToPassword;
